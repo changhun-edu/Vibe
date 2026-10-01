@@ -18,7 +18,8 @@
   --s1:#17784f; --s1t:#e4f2eb;
   --s2:#1f6cc0; --s2t:#e5eefa;
   --s3:#a5560a; --s3t:#f8ecdd;
-  --s4:#26315f; --s4t:#e6e9f3;
+  --s4:#6b3fa0; --s4t:#efe8f7;
+  --brand:#1e2b4a; --brand-t:#e7ebf3;
   --warn:#b42318;
   --f-body:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --f-mono:D2Coding,"D2 coding","Pretendard Variable",ui-monospace,Consolas,monospace;
@@ -26,11 +27,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#12161d; --surface:#1a2029; --soft:#212833; --fg:#e8ecf2; --muted:#9ea8b8; --line:#2c3441; --code:#232a35; --head:#222a36;
-  --s1:#55c99a; --s1t:#16302a; --s2:#6fb0f2; --s2t:#172a40; --s3:#f0a556; --s3t:#33261a; --s4:#aab6ee; --s4t:#232a45;
+  --s1:#55c99a; --s1t:#16302a; --s2:#6fb0f2; --s2t:#172a40; --s3:#f0a556; --s3t:#33261a; --s4:#c3a6ee; --s4t:#2c2340; --brand:#a9bfe8; --brand-t:#1f283a;
   --warn:#ff8a80; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161d; --surface:#1a2029; --soft:#212833; --fg:#e8ecf2; --muted:#9ea8b8; --line:#2c3441; --code:#232a35; --head:#222a36;
-  --s1:#55c99a; --s1t:#16302a; --s2:#6fb0f2; --s2t:#172a40; --s3:#f0a556; --s3t:#33261a; --s4:#aab6ee; --s4t:#232a45;
+  --s1:#55c99a; --s1t:#16302a; --s2:#6fb0f2; --s2t:#172a40; --s3:#f0a556; --s3t:#33261a; --s4:#c3a6ee; --s4t:#2c2340; --brand:#a9bfe8; --brand-t:#1f283a;
   --warn:#ff8a80; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -41,17 +42,24 @@ img{max-width:100%}
 .wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:32px 56px;display:flex;flex-direction:column;gap:40px}
 h1,h2,h3{text-wrap:balance;line-height:1.3;margin:0}
 h1{font-weight:800;font-size:clamp(28px,7vw,40px);letter-spacing:-.025em}
-h2{font-size:21px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--brand)}
 h3{font-size:16px;font-weight:700}
 p{margin:0}
 a{color:inherit}
-.eyebrow{font-size:13px;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.eyebrow{font-size:13px;letter-spacing:.06em;color:var(--brand);font-weight:700}
+.topbar{height:6px;background:var(--brand)}
+header.hero{display:flex;flex-direction:column;gap:12px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+header.hero h1{color:var(--brand)}
+.legend{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--fg)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c)}
+.legend span{color:var(--muted);font-variant-numeric:tabular-nums}
 .lead{color:var(--muted);max-width:62ch}
 section{display:flex;flex-direction:column;gap:14px}
 .sub{font-size:14px;color:var(--muted)}
 .btn{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 12px;cursor:pointer}
 .btn:hover{border-color:var(--muted)}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--s2);outline-offset:2px}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
 
 /* 연수 개요 */
 dl.ov{margin:0;display:grid;grid-template-columns:96px 1fr;border-top:2px solid var(--fg)}
@@ -62,7 +70,14 @@ dl.ov dd.tbd{color:var(--muted)}
 /* 공통 준비물 */
 .must{background:var(--soft);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
 .must ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
-.must li{display:flex;gap:8px;align-items:baseline}
+.must li{position:relative;padding-left:22px}
+.must li::before{content:"✓";position:absolute;left:0;top:0;font-weight:800;color:var(--brand)}
+.must-label{font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.prep-g{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:baseline}
+.prep-g dt{font-size:13px;font-weight:700}
+.prep-g dt.r{color:var(--warn)}
+.prep-g dt.o{color:var(--muted)}
+.prep-g dd{margin:0}
 .flag{display:inline-block;font-size:12px;font-weight:700;border-radius:4px;padding:1px 6px;flex:none;line-height:1.6}
 .flag.r{background:var(--warn);color:var(--surface)}
 .flag.o{background:var(--line);color:var(--fg)}
@@ -70,17 +85,17 @@ dl.ov dd.tbd{color:var(--muted)}
 /* 과정 탭 */
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .tab{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:10px;padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0;min-width:0;position:relative}
-.tab::before{content:"";width:22px;height:4px;border-radius:2px;background:var(--c);margin-bottom:6px}
+.tab::before{content:"";width:34px;height:5px;border-radius:3px;background:var(--c);margin-bottom:7px}
 .tab b{font-size:15px;font-weight:700}
 .tab span{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-.tab[aria-selected="true"]{background:var(--c);border-color:var(--c);color:var(--surface)}
-.tab[aria-selected="true"]::before{background:var(--surface)}
-.tab[aria-selected="true"] span{color:var(--surface);opacity:.85}
+.tab[aria-selected="true"]{background:var(--surface);border-color:var(--c);box-shadow:inset 0 -4px 0 var(--c);color:var(--c)}
+.tab:not([aria-selected="true"]):hover{border-color:var(--muted)}
+.tab[aria-selected="true"] span{color:var(--fg)}
 @media (max-width:480px){.tabs{grid-template-columns:repeat(2,1fr)}}
 
 .panel{display:flex;flex-direction:column;gap:22px;padding-top:6px}
 .p-head{display:flex;flex-direction:column;gap:4px}
-.p-title{font-weight:800;font-size:clamp(22px,5.5vw,27px);letter-spacing:-.02em}
+.p-title{font-weight:700;font-size:clamp(19px,5vw,22px);letter-spacing:-.02em}
 .p-title em{font-style:normal;color:var(--c)}
 .p-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
@@ -97,12 +112,15 @@ table.plan .c-no{width:64px;text-align:center;font-variant-numeric:tabular-nums;
 table.plan .c-subj{width:25%;text-align:center}
 table.plan .c-time{width:56px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
 table.plan .c-meth{width:84px;text-align:center;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums}
-table.plan ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:1px}
-tr.grp td{background:var(--t);color:var(--oc);font-weight:700;font-size:13.5px;padding:7px 12px;letter-spacing:.02em}
+table.plan .c-cont ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1px}
+table.plan .c-cont li{position:relative;padding-left:13px}
+table.plan .c-cont li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:.7}
+tr.grp td{background:var(--surface);color:var(--oc);font-weight:700;font-size:13.5px;padding:14px 12px 6px;letter-spacing:.02em;border-bottom:1px solid var(--line)}
+tr.grp td::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--oc);margin-right:8px;vertical-align:1px}
 tr.grp td span{font-weight:500;color:var(--muted);margin-left:6px}
 tr.row{cursor:pointer}
 tr.row:hover td{background:var(--soft)}
-tr.row.open td{background:var(--t);border-top:2px solid var(--oc);border-bottom:0}
+tr.row.open td{background:var(--surface);border-top:2px solid var(--oc);border-bottom:0}
 tr.row.open td:first-child{border-left:2px solid var(--oc);border-top-left-radius:10px}
 tr.row.open td:last-child{border-right:2px solid var(--oc);border-top-right-radius:10px}
 tr.gap td{height:14px;padding:0;border:0;background:var(--surface)}
@@ -112,51 +130,51 @@ tr.open .pm{transform:rotate(45deg);background:var(--oc);color:var(--surface)}
 tr.sum td{background:var(--head);font-weight:700;text-align:center;border-bottom:0}
 tr.sum td.lab{letter-spacing:.6em}
 tr.sum .u{display:none}
-tr.detail>td{padding:0;background:var(--t);border:2px solid var(--oc);border-top:0;border-radius:0 0 10px 10px}
-.d-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--t);display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;padding:12px 18px 10px;border-top:1px dashed var(--line);border-bottom:1px solid var(--line)}
+tr.detail>td{padding:0;background:var(--surface);border:2px solid var(--oc);border-top:0;border-radius:0 0 10px 10px}
+.d-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--surface);display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;padding:12px 18px 10px;border-top:1px dashed var(--line);border-bottom:1px solid var(--line)}
 .d-no{font-size:22px;font-weight:800;color:var(--oc);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .d-head b{font-size:17px;font-weight:700}
 .d-head span.m{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
 .d-foot{display:flex;justify-content:flex-end;padding:0 18px 16px}
-.d-close{font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--oc);background:var(--surface);color:var(--oc);border-radius:8px;padding:6px 14px;cursor:pointer}
-.d-close:hover{background:var(--oc);color:var(--surface)}
+.d-close{font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--brand);background:var(--surface);color:var(--brand);border-radius:8px;padding:6px 14px;cursor:pointer}
+.d-close:hover{background:var(--brand);color:var(--surface)}
 
 /* 상세 */
 .d{padding:14px 18px 10px;display:flex;flex-direction:column;gap:18px}
 .d-block{display:flex;flex-direction:column;gap:8px}
-.d-block>h3{font-size:13.5px;letter-spacing:.03em;color:var(--oc)}
+.d-block>h3{font-size:13.5px;letter-spacing:.03em;color:var(--brand)}
 .goal{font-weight:600}
-.goal::before{content:"목표 ";color:var(--oc)}
+.goal::before{content:"목표 ";color:var(--brand)}
 ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--line)}
 ol.steps>li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:6px 0 6px 12px;position:relative}
 ol.steps>li::before{content:"";position:absolute;left:-5px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--oc)}
-.min{font-variant-numeric:tabular-nums;font-weight:700;color:var(--oc);font-size:14px}
+.min{font-variant-numeric:tabular-nums;font-weight:700;color:var(--fg);font-size:14px}
 .steps b{display:block;font-weight:600}
 .steps p{color:var(--muted);font-size:14.5px}
 .kind{font-size:11.5px;font-weight:600;color:var(--muted);margin-left:6px}
-.howbtn{font:inherit;font-size:12.5px;font-weight:600;color:var(--oc);background:var(--surface);border:1px solid var(--oc);border-radius:999px;padding:1px 10px;margin-left:8px;cursor:pointer;vertical-align:1px}
+.howbtn{font:inherit;font-size:12.5px;font-weight:600;color:var(--brand);background:var(--surface);border:1px solid var(--brand);border-radius:999px;padding:1px 10px;margin-left:8px;cursor:pointer;vertical-align:1px}
 .howbtn i{font-style:normal;display:inline-block;transition:transform .2s;margin-left:2px}
-.howbtn[aria-expanded="true"]{background:var(--oc);color:var(--surface)}
+.howbtn[aria-expanded="true"]{background:var(--brand);color:var(--surface)}
 .howbtn[aria-expanded="true"] i{transform:rotate(90deg)}
 .how{margin-top:8px;padding:2px 0 4px 2px;display:flex;flex-direction:column;gap:8px}
 ol.how-list{list-style:none;counter-reset:hw;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
 ol.how-list>li{counter-increment:hw;display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14.5px;line-height:1.6}
 ol.how-list>li::before{content:counter(hw);width:20px;height:20px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--fg);font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:2px;font-variant-numeric:tabular-nums}
 .how .tip{font-size:14px;color:var(--fg)}
-.how .tip b{color:var(--oc);margin-right:4px}
+.how .tip b{color:var(--brand);margin-right:4px}
 .how .ui-note{font-size:12.5px;color:var(--muted)}
 .ui{font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 5px;white-space:nowrap}
 .links{display:flex;flex-wrap:wrap;gap:6px 16px}
-.links a{font-size:14.5px;font-weight:600;color:var(--oc);text-underline-offset:3px}
+.links a{font-size:14.5px;font-weight:600;color:var(--brand);text-underline-offset:3px}
 .links a::after{content:" ↗";font-size:12px}
 .prompt-wrap{display:flex;flex-direction:column;gap:6px}
 .prompt-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:600}
 .copy{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:3px 10px;cursor:pointer;flex:none}
-.copy:hover{border-color:var(--oc);color:var(--oc)}
+.copy:hover{border-color:var(--brand);color:var(--brand)}
 .prompt{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-family:var(--f-mono);font-size:14px;line-height:1.65;white-space:pre-wrap;margin:0;overflow-wrap:anywhere}
 .check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:4px 0}
-.check input{width:19px;height:19px;accent-color:var(--oc);flex:none;margin-top:4px}
+.check input{width:19px;height:19px;accent-color:var(--brand);flex:none;margin-top:4px}
 .check input:checked+span{color:var(--muted);text-decoration:line-through}
 .qr-tool{display:flex;flex-direction:column;gap:10px}
 .qr-row{display:flex;gap:8px;flex-wrap:wrap}
@@ -176,13 +194,13 @@ code{font-family:var(--f-mono);font-size:.92em;background:var(--code);padding:1p
 .examples li{border-bottom:1px solid var(--line)}
 .ex{display:grid;grid-template-columns:1fr auto;gap:2px 16px;text-decoration:none;padding:11px 2px}
 .ex b{font-size:15.5px;font-weight:600}
-.ex b::after{content:" ↗";font-size:12px;color:var(--c)}
+.ex b::after{content:" ↗";font-size:12px;color:var(--muted)}
 .ex .cat{font-size:12.5px;color:var(--muted);text-align:right}
 .ex p{grid-column:1/-1;font-size:14px;color:var(--muted);line-height:1.55}
-.ex .why{grid-column:1/-1;font-size:13px;color:var(--c);font-weight:600}
-.ex:hover b{color:var(--c)}
+.ex .why{grid-column:1/-1;font-size:13px;color:var(--brand);font-weight:600}
+.ex:hover b{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
 .out{display:flex;gap:10px;align-items:baseline}
-.out .tag{font-size:13px;font-weight:700;color:var(--c);flex:none}
+.out .tag{font-size:13px;font-weight:700;color:var(--brand);flex:none}
 .progress{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* 휴대폰: 표를 차시 카드로 */
@@ -193,7 +211,7 @@ code{font-family:var(--f-mono);font-size:.92em;background:var(--code);padding:1p
   tr.row{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"no time meth" "subj subj subj" "cont cont cont";gap:4px 10px;padding:12px 14px 14px;border-bottom:1px solid var(--line)}
   tr.row td{display:block;border:0;padding:0;width:auto!important;text-align:left!important;background:none!important}
   tr.row:hover{background:var(--soft)}
-  tr.row.open{background:var(--t);border:2px solid var(--oc);border-bottom:0;border-radius:10px 10px 0 0}
+  tr.row.open{background:var(--surface);border:2px solid var(--oc);border-bottom:0;border-radius:10px 10px 0 0}
   tr.row.open td{border:0!important;border-radius:0!important}
   tr.gap,tr.gap td{display:block}
   tr.row .c-no{grid-area:no;font-size:14px;color:var(--oc)}
@@ -235,17 +253,84 @@ code{font-family:var(--f-mono);font-size:.92em;background:var(--code);padding:1p
 .grid-links b::after{content:" ↗";font-size:12px;color:var(--muted)}
 .grid-links span{font-size:13px;color:var(--muted)}
 .tips{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
-footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:4px}
+footer{border-top:2px solid var(--fg);padding-top:20px;display:flex;flex-direction:column;gap:18px;font-size:13.5px;color:var(--muted)}
+.f-top{display:grid;grid-template-columns:1fr auto;gap:16px 40px;align-items:start}
+.f-sign{display:flex;flex-direction:column;gap:4px;max-width:36ch}
+.f-name{font-size:15px;font-weight:700;color:var(--fg)}
+.f-meta{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 14px}
+.f-meta dt{font-weight:600;color:var(--fg)}
+.f-meta dd{margin:0}
+.f-meta dd span{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-left:4px;white-space:nowrap}
+.f-fine{font-size:12px;line-height:1.6;border-top:1px solid var(--line);padding-top:12px}
+@media (max-width:560px){.f-top{grid-template-columns:1fr}}
+
+/* 오픈소스 라이선스 */
+.lic-btn{font:inherit;font-size:13px;font-weight:600;background:none;color:var(--brand);border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.lic-btn:hover{color:var(--fg)}
+dialog.lic{width:min(720px,calc(100vw - 24px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--fg);overflow:hidden}
+dialog.lic[open]{display:flex;flex-direction:column}
+dialog.lic::backdrop{background:rgba(10,14,20,.5)}
+.lic-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.lic-x{font:inherit;font-size:22px;line-height:1;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.lic-body{padding:16px 18px 20px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.lic-body>*{flex-shrink:0}
+.lic-tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.lic-tbl table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+.lic-tbl th,.lic-tbl td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.lic-tbl th{background:var(--head);font-size:13px;white-space:nowrap}
+.lic-tbl td:first-child{min-width:120px}
+.lic-tbl td:nth-child(2){white-space:nowrap}
+.lic-tbl tr:last-child td{border-bottom:0}
+.lic-tbl small{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-top:2px}
+.lic-text{border:1px solid var(--line);border-radius:10px}
+.lic-text summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:14.5px}
+.lic-text pre{margin:0;padding:12px 14px;border-top:1px solid var(--line);background:var(--code);font-family:var(--f-mono);font-size:12px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;max-height:50vh;overflow:auto;border-radius:0 0 10px 10px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(64px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--fg);color:var(--bg);font-size:14px;font-weight:500;padding:10px 16px;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.2);max-width:calc(100vw - 32px);text-align:center}
+
+/* 자주 쓰는 프롬프트 */
+.habits{background:var(--soft);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.habits ol{margin:0;padding:0;list-style:none;counter-reset:hb;display:flex;flex-direction:column;gap:8px}
+.habits li{counter-increment:hb;display:grid;grid-template-columns:24px 1fr;gap:8px}
+.habits li::before{content:counter(hb);width:22px;height:22px;border-radius:50%;background:var(--fg);color:var(--bg);font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:2px}
+.habits b{font-weight:700}
+.habits span{color:var(--muted);font-size:14.5px}
+.pgroups{border-top:2px solid var(--fg)}
+.pg{border-bottom:1px solid var(--line)}
+.pg>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px 4px}
+.pg>summary::-webkit-details-marker{display:none}
+.pg-no{width:28px;height:28px;border-radius:8px;background:var(--soft);font-weight:800;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.pg-t{display:flex;flex-direction:column;line-height:1.4}
+.pg-t b{font-size:16px;font-weight:700}
+.pg-t span{font-size:13px;color:var(--muted)}
+.pg-c{font-size:13px;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.pg-c::after{content:"+";font-size:20px;line-height:1;color:var(--muted)}
+.pg[open] .pg-c::after{content:"−"}
+.pg[open] .pg-no{background:var(--fg);color:var(--bg)}
+.pg-list{list-style:none;margin:0;padding:0 0 18px;display:flex;flex-direction:column;gap:16px}
+.pi{display:flex;flex-direction:column;gap:6px}
+.pi-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pi-head b{font-size:15.5px;font-weight:700}
+
+.pi-desc{font-size:14px;color:var(--muted)}
+.pi .prompt{background:var(--surface)}
+mark.blank{background:var(--s3t);color:var(--s3);font-weight:700;border-radius:3px;padding:0 2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+<div class="topbar" aria-hidden="true"></div>
 <div class="wrap">
 
-<header style="display:flex;flex-direction:column;gap:12px">
+<header class="hero">
   <p class="eyebrow">교직원 연수 · 단계별 누적 과정</p>
   <h1>바이브 코딩 연수 길잡이</h1>
   <p class="lead">말로 설명하면 AI가 코드를 써 주는 '바이브 코딩'으로 학교 업무용 웹사이트를 직접 만들어 배포합니다. 입문과정(2차시)부터 전문가과정(15차시)까지, 앞 과정 위에 다음 과정이 쌓입니다.</p>
+  <ul class="legend" aria-label="과정 구성">
+    <li style="--c:var(--s1)">입문 <span>2차시</span></li>
+    <li style="--c:var(--s2)">기초 <span>6차시</span></li>
+    <li style="--c:var(--s3)">심화 <span>10차시</span></li>
+    <li style="--c:var(--s4)">전문가 <span>15차시</span></li>
+  </ul>
 </header>
 
 <section aria-labelledby="h-ov">
@@ -256,10 +341,11 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 <section aria-labelledby="h-prep">
   <h2 id="h-prep">연수 전날까지 준비해 주세요</h2>
   <div class="must">
+    <p class="must-label"><span class="flag r">필수</span> 아래 세 가지는 모든 수강생이 준비합니다.</p>
     <ul>
-      <li><span class="flag r">필수</span><span><b>구글 계정</b> — 비밀번호와 2단계 인증용 휴대폰을 함께 챙기세요. 학교 업무용 계정보다 개인 Gmail 계정을 권장합니다.</span></li>
-      <li><span class="flag r">필수</span><span><b>노트북</b>과 크롬 브라우저 최신 버전. 태블릿만으로는 파일 업로드가 불편합니다.</span></li>
-      <li><span class="flag r">필수</span><span><b>유료 생성형 AI 1개</b> (기초과정 이상) — 무료 버전은 긴 코드를 중간에 끊거나 사용 횟수가 금방 바닥나 실습이 멈춥니다.</span></li>
+      <li><span><b>구글 계정</b> — 비밀번호와 2단계 인증용 휴대폰을 함께 챙기세요. 학교 업무용 계정보다 개인 Gmail 계정을 권장합니다.</span></li>
+      <li><span><b>노트북</b>과 크롬 브라우저 최신 버전. 태블릿만으로는 파일 업로드가 불편합니다.</span></li>
+      <li><span><b>유료 생성형 AI 1개</b> (기초과정 이상) — 무료 버전은 긴 코드를 중간에 끊거나 사용 횟수가 금방 바닥나 실습이 멈춥니다.</span></li>
     </ul>
     <p class="sub">과정마다 필요한 준비물은 아래 과정별 계획표의 ※ 준비물에서 확인하세요.</p>
   </div>
@@ -272,12 +358,22 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   <p class="sub">실습 단계의 [따라 하기]는 2026년 10월 화면 기준이며, GitHub·Vercel·Firebase 등의 화면 구성과 버튼 이름은 바뀔 수 있습니다. 1차시는 60분 기준입니다. 연수 기관 기준이 50분이면 상세 진행 순서의 시간을 비율대로 줄여 운영하세요. 체크 표시는 이 기기의 브라우저에만 저장됩니다.</p>
 </section>
 
+<section aria-labelledby="h-pr" id="prompts">
+  <h2 id="h-pr">자주 쓰는 프롬프트</h2>
+  <p class="sub">바이브 코딩을 하며 자주 쓰는 요청을 상황별로 모았습니다. <mark class="blank">[ ]</mark> 부분을 내 내용으로 바꿔 쓰세요.</p>
+  <div class="habits">
+    <h3>먼저 몸에 익힐 습관</h3>
+    <ol id="habits"></ol>
+  </div>
+  <div class="pgroups" id="pgroups"></div>
+</section>
+
 <section aria-labelledby="h-faq" class="faq">
   <h2 id="h-faq">막혔을 때</h2>
   <div>
     <details><summary>Vercel 주소에 들어가면 404가 떠요<span class="err">404</span></summary><div class="ans"><p>파일 이름이 정확히 <code>index.html</code>(소문자)인지, 폴더 안에 넣지 않고 저장소 맨 위에 올렸는지 확인하세요.</p></div></details>
     <details><summary>GitHub에서 고쳤는데 사이트가 그대로예요</summary><div class="ans"><p>Commit 후 Vercel이 다시 배포하는 데 1~2분 걸립니다. 그래도 같으면 PC는 <code>Ctrl+Shift+R</code>, 휴대폰은 시크릿 창으로 열어 보세요.</p></div></details>
-    <details><summary>AI가 코드를 쓰다가 중간에 멈춰요</summary><div class="ans"><p>"이어서 작성해 줘"라고 요청하세요. 자주 끊기면 "바뀐 부분만 보여 줘"로 요청 범위를 줄이고, 유료 요금제를 사용하세요.</p></div></details>
+    <details><summary>AI가 코드를 쓰다가 중간에 멈춰요</summary><div class="ans"><p>"이어서 작성해 주세요"라고 요청하세요. 자주 끊기면 "바뀐 부분만 보여 주세요"로 요청 범위를 줄이고, 유료 요금제를 사용하세요.</p></div></details>
     <details><summary>Firebase에 저장이 안 돼요<span class="err">permission-denied</span></summary><div class="ans"><p>보안 규칙이 막고 있습니다. 테스트 모드는 만든 날부터 약 30일 뒤 자동으로 막히니 규칙의 날짜를 확인하세요. 9차시에서 제대로 된 규칙으로 바꿉니다.</p></div></details>
     <details><summary>구글 로그인 창이 안 떠요<span class="err">unauthorized-domain</span></summary><div class="ans"><p>Firebase 콘솔 → Authentication → 설정 → 승인된 도메인에 <code>내프로젝트.vercel.app</code>을 추가하세요. <code>https://</code>는 빼고 넣습니다.</p></div></details>
     <details><summary>API를 불렀는데 CORS 오류가 나요<span class="err">CORS</span></summary><div class="ans"><p>그 API가 브라우저에서 직접 부르는 것을 막는 경우입니다. 10차시의 Vercel 서버리스 함수(<code>/api</code>)로 대신 호출하면 해결됩니다.</p></div></details>
@@ -306,10 +402,166 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <footer>
-  <p>만든이 2026 최창훈</p>
-  <p>글꼴: Pretendard, D2Coding (SIL Open Font License 1.1) · QR 생성: QRCode.js (MIT License)</p>
+  <div class="f-top">
+    <div class="f-sign">
+      <p class="f-name">만든이 2026 최창훈</p>
+      <p>연수 구성, 안내 문구, 프롬프트 예시는 만든이가 직접 기획·작성했습니다.</p>
+    </div>
+    <dl class="f-meta">
+      <dt>글꼴</dt><dd>Pretendard · D2Coding <span>SIL OFL 1.1</span></dd>
+      <dt>라이브러리</dt><dd>QRCode.js <span>MIT</span></dd>
+      <dt>문의</dt><dd>sig101@hanmail.net</dd>
+      <dt>라이선스</dt><dd><button type="button" class="lic-btn" id="licOpen" aria-haspopup="dialog">ⓘ 오픈소스 라이선스</button></dd>
+    </dl>
+  </div>
+  <p class="f-fine">© 2026 최창훈. GitHub, Vercel, Firebase, Google, Gemini, ChatGPT, Claude 등 서비스 이름은 각 회사의 상표이며, 이 사이트는 해당 회사와 관계가 없습니다. QR Code는 (주)덴소웨이브의 등록상표입니다.</p>
 </footer>
 </div>
+
+<dialog class="lic" id="licDlg" aria-labelledby="licTitle">
+  <div class="lic-head">
+    <h2 id="licTitle">오픈소스 라이선스</h2>
+    <button type="button" class="lic-x" id="licClose" aria-label="닫기">×</button>
+  </div>
+  <div class="lic-body">
+    <p class="sub">이 사이트는 아래 오픈소스 글꼴과 라이브러리를 사용합니다. 각 구성 요소는 해당 라이선스를 따릅니다.</p>
+    <div class="lic-tbl">
+      <table>
+        <thead><tr><th>구성 요소</th><th>라이선스</th><th>저작권자</th></tr></thead>
+        <tbody>
+          <tr><td>Pretendard<small>본문·제목 글꼴</small></td><td>SIL OFL 1.1</td><td>Copyright (c) 2021, Kil Hyung-jin (길형진), with Reserved Font Name Pretendard.<small>포함 글꼴: Source Han Sans — Copyright 2014-2021 Adobe, with Reserved Font Name 'Source' / Inter — Copyright (c) 2016-2020 The Inter Project Authors / M PLUS 1p — Copyright (c) 2016 M+ FONTS PROJECT</small></td></tr>
+          <tr><td>D2Coding<small>코드·프롬프트 글꼴</small></td><td>SIL OFL 1.1</td><td>Copyright (c) 2015, NAVER Corporation, with Reserved Font Name D2Coding.</td></tr>
+          <tr><td>QRCode.js<small>배포 주소 QR 생성</small></td><td>MIT</td><td>Copyright (c) 2012 davidshimjs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="lic-text">
+      <summary>MIT License 전문</summary>
+<pre>The MIT License (MIT)
+
+Copyright (c) 2012 davidshimjs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
+    </details>
+
+    <details class="lic-text">
+      <summary>SIL Open Font License 1.1 전문</summary>
+<pre>Copyright (c) 2021, Kil Hyung-jin (https://github.com/orioncactus/pretendard),
+with Reserved Font Name Pretendard.
+Copyright (c) 2015, NAVER Corporation (https://www.navercorp.com/),
+with Reserved Font Name D2Coding.
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://openfontlicense.org
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) and the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.</pre>
+    </details>
+    <p class="sub">이 사이트는 Apache-2.0, BSD-3-Clause, ISC 라이선스 구성 요소를 사용하지 않아 해당 전문은 싣지 않았습니다.</p>
+  </div>
+</dialog>
+
 
 <script>
 (function(){
@@ -351,20 +603,20 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
   ];
 
   var P={
-    first:'초등학교 교사가 수업 시간에 쓰는 웹페이지를 만들어 줘.\n- 기능: 학생 이름 목록에서 발표자를 무작위로 1명 뽑기, 뽑힌 학생은 다시 안 나오게\n- 디자인: 큰 글씨, 밝은 색, 전자칠판에서 잘 보이게\n- 휴대폰에서도 잘 보이게\n- HTML, CSS, JavaScript를 index.html 파일 하나에 모두 넣어 줘',
-    fix:'방금 만든 index.html에서 다음 한 가지만 고쳐 줘. 나머지는 그대로 두고 전체 코드를 다시 보여 줘.\n- 뽑기 버튼을 누르면 이름이 2초 동안 빠르게 바뀌다가 멈추게 해 줘',
-    err:'아래는 브라우저 콘솔에 나온 오류 메시지야. 원인을 초등교사도 이해할 수 있게 한 줄로 설명하고, 고친 코드를 보여 줘.\n(여기에 오류 메시지 붙여넣기)',
-    excel:'지금 index.html에 엑셀 기능을 추가해 줘.\n- 학생 명단 엑셀(.xlsx)을 올리면 이름 목록으로 불러오기\n- 결과를 엑셀로 내려받는 버튼\n- SheetJS를 CDN으로 불러와서 사용하고, 나머지 기능은 그대로 둬',
-    vote:'교직원 회의용 실시간 투표 웹앱을 index.html 하나로 만들어 줘.\n- Firebase Realtime Database를 사용하고, 설정값은 맨 위 firebaseConfig 자리에 내가 붙여 넣을게\n- 관리자가 질문과 보기 3~4개를 입력하면, 참여자는 휴대폰으로 하나를 고른다\n- 결과는 막대그래프로 실시간 갱신\n- 이름이나 개인정보는 받지 않는다',
-    meal:'NEIS 교육정보 개방 포털의 급식식단정보 API로 "오늘의 급식" 웹페이지를 index.html 하나로 만들어 줘.\n- 시도교육청 코드와 학교 코드는 맨 위 변수에 내가 넣을게\n- 오늘 날짜 급식을 크게, 알레르기 번호는 작게 표시\n- 급식이 없는 날은 "오늘은 급식이 없습니다"라고 표시',
-    login:'지금 index.html에 Firebase Authentication 구글 로그인을 추가해 줘.\n- 로그인 전에는 로그인 버튼만 보이고, 로그인하면 이름과 로그아웃 버튼이 보이게\n- 나머지 기능은 그대로 둬\n- Firebase 콘솔에서 내가 해야 할 설정도 순서대로 알려 줘',
-    room:'학교 특별실 예약 웹앱을 index.html 하나로 만들어 줘.\n- Firebase Authentication 구글 로그인, Firestore 사용\n- 로그인한 교직원은 날짜·교시·특별실을 골라 예약하고, 자기 예약만 취소할 수 있다\n- 관리자 이메일(ADMIN_EMAILS 배열)로 로그인하면 전체 예약을 보고 엑셀로 내려받을 수 있다\n- 이 구조에 맞는 Firestore 보안 규칙도 따로 작성해 줘',
-    rules:'아래 Firestore 보안 규칙에서 로그인하지 않은 사람이나 다른 교사가 남의 데이터를 읽거나 지울 수 있는 구멍이 있는지 점검해 줘. 있으면 고친 규칙을 보여 줘.\n(여기에 규칙 붙여넣기)',
-    api:'지금 index.html에서 NEIS API 인증키가 코드에 그대로 보여.\n- Vercel 서버리스 함수(api/meal.js)를 만들어 인증키는 환경변수 NEIS_KEY에서 읽게 해 줘\n- index.html은 /api/meal 을 호출하도록 바꿔 줘\n- Vercel에서 환경변수를 넣는 순서도 알려 줘',
-    spec:'나는 초등학교 교사야. 아래 업무 불편을 해결하는 웹사이트를 만들고 싶어.\n불편: (여기에 적기)\n바로 코드를 쓰지 말고, 기능 명세서를 함께 만들기 위해 나에게 질문을 하나씩 해 줘.\n질문이 끝나면 [사용자 / 화면 목록 / 저장할 데이터 / 꼭 필요한 기능 / 하지 않을 것] 형식으로 정리해 줘.',
-    build:'아래 기능 명세서대로 웹사이트를 만들어 줘. 한 번에 다 만들지 말고, 먼저 화면 뼈대만 만든 뒤 내가 확인하면 기능을 하나씩 추가하자.\n(여기에 기능 명세서 붙여넣기)',
-    review:'동료가 내 사이트를 써 보고 남긴 의견이야. 고칠 우선순위를 정해 주고, 1순위부터 고친 코드를 보여 줘. 나머지 기능은 그대로 둬.\n(여기에 의견 붙여넣기)',
-    copyright:'이 index.html에 쓰인 외부 라이브러리, 폰트, 이미지, 인용 문구를 모두 찾아 표로 정리하고, 각각의 라이선스와 출처 표기가 필요한지 알려 줘. 화면 하단에 넣을 라이선스 고지 문구도 만들어 줘.'
+    first:'초등학교 교사가 수업 시간에 쓰는 웹페이지를 만들어 주세요.\n- 기능: 학생 이름 목록에서 발표자를 무작위로 1명 뽑기, 뽑힌 학생은 다시 나오지 않게\n- 디자인: 큰 글씨, 밝은 색, 전자칠판에서 잘 보이게\n- 휴대폰에서도 잘 보이게\n- HTML, CSS, JavaScript를 index.html 파일 하나에 모두 넣어 주세요',
+    fix:'직전에 만든 index.html을 베이스로 다음 한 가지만 고쳐 주세요. 나머지는 그대로 두고 전체 코드를 다시 보여 주세요.\n- 뽑기 버튼을 누르면 이름이 2초 동안 빠르게 바뀌다가 멈추게 해 주세요',
+    err:'아래는 브라우저 콘솔에 나온 오류 메시지입니다. 원인을 초등교사도 이해할 수 있게 한 줄로 설명하고, 고친 코드를 보여 주세요.\n(여기에 오류 메시지 붙여넣기)',
+    excel:'지금 index.html에 엑셀 기능을 추가해 주세요.\n- 학생 명단 엑셀(.xlsx)을 올리면 이름 목록으로 불러오기\n- 결과를 엑셀로 내려받는 버튼\n- SheetJS를 CDN으로 불러와 사용하고, 나머지 기능은 그대로 두세요',
+    vote:'교직원 회의용 실시간 투표 웹앱을 index.html 하나로 만들어 주세요.\n- Firebase Realtime Database를 사용하고, 설정값은 맨 위 firebaseConfig 자리에 제가 붙여 넣겠습니다\n- 관리자가 질문과 보기 3~4개를 입력하면, 참여자는 휴대폰으로 하나를 고릅니다\n- 결과는 막대그래프로 실시간 갱신해 주세요\n- 이름이나 개인정보는 받지 않습니다',
+    meal:'NEIS 교육정보 개방 포털의 급식식단정보 API로 "오늘의 급식" 웹페이지를 index.html 하나로 만들어 주세요.\n- 시도교육청 코드와 학교 코드는 맨 위 변수에 제가 넣겠습니다\n- 오늘 날짜 급식을 크게, 알레르기 번호는 작게 표시해 주세요\n- 급식이 없는 날은 "오늘은 급식이 없습니다"라고 표시해 주세요',
+    login:'지금 index.html에 Firebase Authentication 구글 로그인을 추가해 주세요.\n- 로그인 전에는 로그인 버튼만 보이고, 로그인하면 이름과 로그아웃 버튼이 보이게 해 주세요\n- 나머지 기능은 그대로 두세요\n- Firebase 콘솔에서 제가 해야 할 설정도 순서대로 알려 주세요',
+    room:'학교 특별실 예약 웹앱을 index.html 하나로 만들어 주세요.\n- Firebase Authentication 구글 로그인, Firestore를 사용합니다\n- 로그인한 교직원은 날짜·교시·특별실을 골라 예약하고, 자기 예약만 취소할 수 있습니다\n- 관리자 이메일(ADMIN_EMAILS 배열)로 로그인하면 전체 예약을 보고 엑셀로 내려받을 수 있습니다\n- 이 구조에 맞는 Firestore 보안 규칙도 따로 작성해 주세요',
+    rules:'아래 Firestore 보안 규칙에서 로그인하지 않은 사람이나 다른 교사가 남의 데이터를 읽거나 지울 수 있는 구멍이 있는지 점검해 주세요. 있으면 고친 규칙을 보여 주세요.\n(여기에 규칙 붙여넣기)',
+    api:'지금 index.html에서 NEIS API 인증키가 코드에 그대로 보입니다.\n- Vercel 서버리스 함수(api/meal.js)를 만들어 인증키는 환경변수 NEIS_KEY에서 읽게 해 주세요\n- index.html은 /api/meal 을 호출하도록 바꿔 주세요\n- Vercel에서 환경변수를 넣는 순서도 알려 주세요',
+    spec:'저는 초등학교 교사입니다. 아래 업무 불편을 해결하는 웹사이트를 만들고 싶습니다.\n불편: (여기에 적기)\n바로 코드를 쓰지 말고, 기능 명세서를 함께 만들기 위해 저에게 질문을 하나씩 해 주세요.\n질문이 끝나면 [사용자 / 화면 목록 / 저장할 데이터 / 꼭 필요한 기능 / 하지 않을 것] 형식으로 정리해 주세요.',
+    build:'아래 기능 명세서대로 웹사이트를 만들어 주세요. 한 번에 다 만들지 말고, 먼저 화면 뼈대만 만든 뒤 제가 확인하면 기능을 하나씩 추가해 주세요.\n(여기에 기능 명세서 붙여넣기)',
+    review:'동료가 제 사이트를 써 보고 남긴 의견입니다. 고칠 우선순위를 정해 주시고, 1순위부터 고친 코드를 보여 주세요. 나머지 기능은 그대로 두세요.\n(여기에 의견 붙여넣기)',
+    copyright:'이 index.html에 쓰인 외부 라이브러리, 글꼴, 이미지, 인용 문구를 모두 찾아 표로 정리하고, 각각의 라이선스와 출처 표기가 필요한지 알려 주세요. 화면 하단에 넣을 라이선스 고지 문구도 만들어 주세요.'
   };
 
   var L={
@@ -516,7 +768,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     h+='<div class="d-block"><h3>진행 순서</h3><ol class="steps">';
     s.steps.forEach(function(st,i){
       var hw=HOW[s.key+'-'+i];
-      h+='<li><span class="min">'+st[0]+'분</span><div><b>'+esc(st[1])+'<span class="kind">'+st[3]+'</span>'+(hw?'<button class="howbtn" type="button" aria-expanded="false">따라 하기 <i aria-hidden="true">▸</i></button>':'')+'</b><p>'+esc(st[2])+'</p>';
+      h+='<li><span class="min">'+st[0]+'분</span><div><b>'+esc(st[1])+'<span class="kind">'+st[3]+'</span>'+(hw?'<button class="howbtn" type="button" aria-expanded="false" data-h="'+s.key+'-'+i+'">따라 하기 <i aria-hidden="true">▸</i></button>':'')+'</b><p>'+esc(st[2])+'</p>';
       if(hw){
         h+='<div class="how" hidden><ol class="how-list">'+hw.s.map(function(x){return '<li><span>'+ui(x)+'</span></li>'}).join('')+'</ol>';
         if(hw.t)h+='<p class="tip"><b>자주 막히는 곳</b>'+ui(hw.t)+'</p>';
@@ -552,6 +804,71 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     dl.innerHTML=h;
   })();
 
+
+  /* ---------- 자주 쓰는 프롬프트 코너 ---------- */
+  var HABITS=[
+    ['나와 사용자를 밝힙니다.','"저는 초등 교사이고, 이 앱은 학부모가 휴대폰으로 씁니다"처럼 시작합니다.'],
+    ['한 번에 하나씩 요청합니다.','기능 여러 개를 한꺼번에 시키면 기존 기능이 망가지기 쉽습니다.'],
+    ['"나머지는 그대로 두세요"를 붙입니다.','AI가 고치지 말아야 할 곳까지 바꾸는 일을 막습니다.'],
+    ['파일 하나로 달라고 합니다.','index.html 하나로 끝나야 GitHub에 올리고 배포하기 쉽습니다.'],
+    ['실제 개인정보는 넣지 않습니다.','학생 이름 대신 "학생1, 학생2"처럼 씁니다.'],
+    ['이전 결과물을 베이스로 고쳐 달라고 합니다.','AI가 처음부터 새로 만들면 그동안 고쳐 둔 내용이 사라집니다.']
+  ];
+  var PG=[
+    {t:'시작하기',w:'1~2차시',items:[
+      ['첫 페이지 만들기 공식','','저는 [초등학교 교사]입니다. [누가] 쓰는 웹페이지를 만들어 주세요.\n- 기능: [무엇을 하는지]\n- 디자인: [분위기, 글씨 크기]\n- 휴대폰에서도 잘 보이게 해 주세요\n- HTML, CSS, JavaScript를 index.html 파일 하나에 모두 넣어 주세요'],
+      ['코드보다 화면 먼저 보기','처음 만들 때 방향이 틀어지는 것을 막아 줍니다.','코드를 쓰기 전에, 이 웹페이지의 화면 구성을 위에서 아래 순서로 글로 설명해 주세요.\n제가 확인하면 그때 코드를 만들어 주세요.']]},
+    {t:'고쳐 나가기',w:'1~3차시',items:[
+      ['한 가지만 고치기','','직전에 만든 index.html을 베이스로 다음 한 가지만 고쳐 주세요.\n나머지는 그대로 두고 전체 코드를 다시 보여 주세요.\n- [고칠 내용]'],
+      ['바뀐 부분만 보기','코드가 길어 전체를 다시 받기 어려울 때 씁니다.','코드가 길어서 전체를 다시 받기 어렵습니다. 바꿔야 할 부분만\n"이 줄을 찾아서 → 이렇게 바꾸기" 형식으로 알려 주세요.'],
+      ['되돌리기','','방금 수정은 마음에 들지 않습니다. 바로 전 버전으로 되돌린 전체 코드를 보여 주시고,\n무엇을 바꿨었는지 한 줄로 알려 주세요.'],
+      ['개선 아이디어 먼저 받기','고칠 방향을 먼저 고르고 시키면 원치 않는 변경이 줄어듭니다.','지금 [사이트 / 이 화면]의 개선 아이디어를 주세요.\n바로 고치지 말고, 효과가 큰 순서로 3~5가지만 정리해 주세요.'],
+      ['작은 기기 점검','휴대폰 화면을 고치기 전에 문제부터 진단받습니다.','스마트폰과 같이 작은 기기에서 보기 적절한지 판단해 보고,\n어떤 문제점이 있는지 알려 주세요.'],
+      ['휴대폰 화면 맞추기','','휴대폰에서 보면 [글자가 잘림 / 표가 화면 밖으로 나감 / 버튼이 너무 작음].\n폭 360px 화면에서도 가로 스크롤 없이 보이게 고쳐 주세요. 나머지는 그대로 두세요.']]},
+    {t:'오류 해결',w:'3차시',items:[
+      ['콘솔 오류 붙여 넣기','F12 → Console 탭의 빨간 글씨를 복사해 함께 보냅니다.','아래는 브라우저 콘솔에 나온 오류 메시지입니다. 원인을 초등교사도 이해할 수 있게\n한 줄로 설명하고, 고친 코드를 보여 주세요.\n[오류 메시지]'],
+      ['오류 메시지가 없을 때','','[버튼을 눌러도 아무 일도 일어나지 않습니다]. 콘솔에 오류는 없습니다.\n원인 후보 3가지와, 각각을 제가 확인하는 방법을 순서대로 알려 주세요.'],
+      ['원인 분석하고 개선','원인을 알아 두면 같은 문제가 다시 생겼을 때 스스로 대처할 수 있습니다.','[이상한 점: 예) 표가 화면 밖으로 밀려남]. 원인을 분석하고 개선해 주세요.\n무엇이 원인이었는지 한두 줄로 먼저 알려 주세요.'],
+      ['코드가 중간에 끊겼을 때','','코드가 중간에 끊겼습니다. [마지막으로 받은 줄]부터 이어서 끝까지 작성해 주세요.']]},
+    {t:'데이터와 연결',w:'4~6차시',items:[
+      ['엑셀 주고받기','','지금 index.html에 엑셀 기능을 추가해 주세요.\n- [명단 엑셀]을 올리면 화면에 불러오기\n- 결과를 엑셀로 내려받는 버튼\n- SheetJS를 CDN으로 불러오고, 나머지 기능은 그대로 두세요'],
+      ['콘솔에서 할 일 묻기','','이 앱을 Firebase에 연결하려고 합니다. 코드 말고, Firebase 콘솔에서 제가 눌러야 할\n메뉴와 버튼을 1, 2, 3 순서로 알려 주세요. 화면이 다르면 어떻게 찾는지도 알려 주세요.'],
+      ['API 써 보기','','[NEIS 급식식단정보] API로 [오늘 급식]을 보여 주고 싶습니다.\n필요한 값(인증키, 학교 코드 등)을 먼저 알려 주시고, 값을 넣을 자리를 코드 맨 위 변수로 만들어 주세요.']]},
+    {t:'로그인과 보안',w:'7~10차시',items:[
+      ['보안 규칙 점검','','아래 Firestore 보안 규칙에서 로그인하지 않은 사람이나 다른 교사가 남의 데이터를\n읽거나 지울 수 있는 구멍이 있는지 점검하고, 있으면 고친 규칙을 보여 주세요.\n[보안 규칙]'],
+      ['개인정보 점검','','이 앱이 저장하는 정보를 모두 표로 정리해 주세요. 그중 개인정보에 해당하는 것을 표시하고,\n저장하지 않거나 줄일 수 있는 방법을 알려 주세요.'],
+      ['API 키 숨기기','','지금 index.html에 API 인증키가 그대로 보입니다. Vercel 서버리스 함수와 환경변수로\n키를 숨기는 방법을 코드와 설정 순서로 알려 주세요.']]},
+    {t:'기획과 마무리',w:'11~15차시',items:[
+      ['기능 명세서 인터뷰','','저는 초등학교 교사입니다. [업무 불편]을 해결하는 웹사이트를 만들고 싶습니다.\n바로 코드를 쓰지 말고, 기능 명세서를 함께 만들기 위해 저에게 질문을 하나씩 해 주세요.'],
+      ['명세서로 단계별 개발','','아래 기능 명세서대로 만들어 주세요. 먼저 화면 뼈대만 만들고,\n제가 확인하면 기능을 하나씩 추가해 주세요.\n[기능 명세서]'],
+      ['내 코드 이해하기','','이 코드가 하는 일을 5줄로 설명해 주세요. 그리고 [제목 / 색 / 문구]를 바꾸려면\n어디를 고치면 되는지 알려 주세요.'],
+      ['테스트 목록 만들기','','이 앱을 처음 쓰는 선생님이 할 만한 행동 10가지를 적고,\n각각에서 확인할 점을 체크리스트로 만들어 주세요.'],
+      ['사용 설명 화면 추가','','이 앱에 \'처음 쓰는 분께\' 안내 화면을 추가해 주세요. 3단계 이내로 짧게,\n첫 화면의 작은 버튼으로 열고 닫을 수 있게 해 주세요. 나머지는 그대로 두세요.'],
+      ['저작권 점검','','이 index.html에 쓰인 외부 라이브러리, 글꼴, 이미지, 인용 문구를 표로 정리하고,\n각각의 라이선스와 출처 표기가 필요한지 알려 주세요. 하단에 넣을 고지 문구도 만들어 주세요.']]},
+    {t:'사용하기 편하게 다듬기',w:'언제든',items:[
+      ['뒤로 가기·새로고침 유지','','인터넷 브라우저에서 뒤로 가기나 새로고침을 해도 사이트가 종료되지 않도록 수정해 주세요.\n주소(URL)에 해시(#)를 남기지 않게 설정해 주세요.'],
+      ['로고 누르면 홈으로','','왼쪽 상단의 글씨나 로고를 클릭하면 홈으로 이동하게 변경해 주세요.'],
+      ['화면 폭 통일','화면마다 좌우 폭이 들쭉날쭉하거나 머리글만 넓게 퍼질 때 씁니다.','전체를 동일한 컨테이너로 통일하고, 헤더 내부에도 동일한 max-width 컨테이너를 적용해\n업데이트해 주세요. max-width 720px, 가운데 정렬.'],
+      ['PC 전용 안내','반편성처럼 큰 화면이 꼭 필요한 프로그램에 씁니다.','스마트폰과 같이 작은 기기에서 사이트를 열면\n"PC 전용 프로그램입니다"와 같은 안내 메시지를 보여 주세요.']]}
+  ];
+  function blanks(t){return esc(t).replace(/\[([^\]]+)\]/g,'<mark class="blank">[$1]</mark>')}
+  (function(){
+    document.getElementById('habits').innerHTML=HABITS.map(function(h){return '<li><div><b>'+esc(h[0])+'</b> <span>'+esc(h[1])+'</span></div></li>'}).join('');
+    var nums='①②③④⑤⑥⑦',h='';
+    PG.forEach(function(g,gi){
+      h+='<details class="pg"><summary><span class="pg-no">'+(gi+1)+'</span><span class="pg-t"><b>'+esc(g.t)+'</b><span>'+esc(g.w)+'</span></span><span class="pg-c">'+g.items.length+'개</span></summary><ul class="pg-list">';
+      g.items.forEach(function(it){
+        h+='<li class="pi"><div class="pi-head"><b>'+esc(it[0])+'</b><button class="copy" type="button">복사</button></div>'+(it[1]?'<p class="pi-desc">'+esc(it[1])+'</p>':'')+'<pre class="prompt">'+blanks(it[2])+'</pre></li>';
+      });
+      h+='</ul></details>';
+    });
+    var box=document.getElementById('pgroups');box.innerHTML=h;
+    box.addEventListener('click',function(e){
+      var b=e.target.closest('.copy');if(!b)return;
+      var pre=b.closest('.pi').querySelector('.prompt');copyText(pre.textContent,b,pre,'복사');
+    });
+  })();
+
   /* ---------- 과정 패널 ---------- */
   var tabsEl=document.getElementById('tabs'),panelsEl=document.getElementById('panels');
   COURSES.forEach(function(c){
@@ -562,7 +879,6 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     tab.className='tab';tab.type='button';tab.id='tab'+c.id;tab.setAttribute('role','tab');
     tab.setAttribute('aria-controls','course'+c.id);tab.style.cssText='--c:'+c.c+';--t:'+c.t;
     tab.innerHTML='<b>'+c.name+'</b><span>'+c.n+'차시</span>';
-    tab.addEventListener('click',function(){select(c.id,false)});
     tabsEl.appendChild(tab);
 
     var p=document.createElement('div');
@@ -593,7 +909,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     h+='<tr class="sum"><td class="empty"></td><td class="lab" colspan="2">합계</td><td>'+hrs+'<span class="u">시간</span></td><td>'+meth({lec:lec,prac:prac}).join(', <br>')+'</td></tr>';
     h+='</tbody></table></div>';
     h+='<p class="progress"></p>';
-    h+='<div class="note"><h3>※ 준비물</h3><ul class="prep">'+c.prep.map(function(x){return '<li><span class="flag '+x[0]+'">'+(x[0]==='r'?'필수':'권장')+'</span><span>'+esc(x[1])+'</span></li>'}).join('')+'</ul></div>';
+    var req=c.prep.filter(function(x){return x[0]==='r'}).map(function(x){return esc(x[1])}),opt=c.prep.filter(function(x){return x[0]!=='r'}).map(function(x){return esc(x[1])});
+    h+='<div class="note"><h3>※ 준비물</h3><dl class="prep-g"><dt class="r">필수</dt><dd>'+req.join(' · ')+'</dd>'+(opt.length?'<dt class="o">권장</dt><dd>'+opt.join(' · ')+'</dd>':'')+'</dl></div>';
     h+='<div class="note"><div class="ex-head"><h3>학교 연장통 예시</h3><a href="'+HUB+'" target="_blank" rel="noopener">학교 연장통 전체 보기 ↗</a></div><p class="sub">'+esc(c.exDesc)+'</p><ul class="examples">';
     c.ex.forEach(function(e){h+='<li><a class="ex" href="'+e[2]+'" target="_blank" rel="noopener"><b>'+esc(e[1])+'</b><span class="cat">'+esc(e[0])+'</span><p>'+esc(e[3])+'</p><span class="why">'+esc(e[4])+'</span></a></li>'});
     h+='</ul></div>';
@@ -615,7 +932,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     document.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected',t.id==='tab'+id?'true':'false')});
     document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.id!=='course'+id});
     try{localStorage.setItem('vibe-course-tab',id)}catch(e){}
-    if(scroll){var el=document.getElementById('courses');el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}
+    if(scroll){var el=document.getElementById('courses');el.scrollIntoView({behavior:'auto',block:'start'})}
   }
   function setRow(row,open){
     var d=row.nextElementSibling;row.classList.toggle('open',open);d.hidden=!open;
@@ -623,23 +940,85 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     row.querySelector('.toggle').setAttribute('aria-expanded',open?'true':'false');
   }
 
+  /* ---------- 화면 상태와 브라우저 기록 (주소창에 # 를 남기지 않음) ---------- */
+  var CLEAN=location.pathname+location.search;
+  var cur={tab:1,row:null,dlg:false};
+  var dlg=document.getElementById('licDlg'),licBtn=document.getElementById('licOpen');
+  function panelOf(id){return document.getElementById('course'+id)}
+  function rowOf(tab,key){return panelOf(tab).querySelector('tr.row[data-key="'+key+'"]')}
+  function showDlg(on){
+    if(on&&!dlg.open){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+    if(!on&&dlg.open){if(dlg.close)dlg.close();else dlg.removeAttribute('open');licBtn.focus()}
+  }
+  function apply(st){
+    if(st.tab!==cur.tab)select(st.tab,false);
+    panelOf(st.tab).querySelectorAll('tr.row.open').forEach(function(r){if(r.getAttribute('data-key')!==st.row)setRow(r,false)});
+    if(st.row){var r=rowOf(st.tab,st.row);if(r&&!r.classList.contains('open'))setRow(r,true)}
+    showDlg(!!st.dlg);
+    cur={tab:st.tab,row:st.row||null,dlg:!!st.dlg};
+  }
+  function record(st,mode){
+    var full={app:1,tab:st.tab,row:st.row||null,dlg:!!st.dlg};
+    try{history[mode==='push'?'pushState':'replaceState'](full,'',CLEAN)}catch(e){}
+    cur={tab:full.tab,row:full.row,dlg:full.dlg};
+  }
+  function closeRowByUser(row){
+    var key=row.getAttribute('data-key');
+    if(history.state&&history.state.app&&history.state.row===key){history.back();return}
+    setRow(row,false);record({tab:cur.tab,row:null,dlg:cur.dlg},'replace');
+  }
+  function closeDlgByUser(){
+    if(history.state&&history.state.app&&history.state.dlg){history.back();return}
+    showDlg(false);record({tab:cur.tab,row:cur.row,dlg:false},'replace');
+  }
+
+  /* 뒤로 가기: 팝업 → 펼친 차시 → 이전 과정 탭 순서로 되돌리고, 맨 처음에서는 한 번 더 눌러야 나감 */
+  var toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');toast.hidden=true;document.body.appendChild(toast);
+  var toastTimer=0,lastGuard=0;
+  function showToast(msg){toast.textContent=msg;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.hidden=true},2500)}
+  window.addEventListener('popstate',function(e){
+    var st=e.state;
+    if(st&&st.guard){
+      if(Date.now()-lastGuard<2500){history.back();return}
+      lastGuard=Date.now();
+      try{history.pushState({app:1,tab:cur.tab,row:cur.row,dlg:false},'',CLEAN)}catch(err){}
+      showDlg(false);cur.dlg=false;
+      showToast('뒤로 가기를 한 번 더 누르면 이 페이지를 나갑니다.');
+      return}
+    if(st&&st.app)apply(st);
+  });
+
+  /* 과정 탭 */
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      var id=+t.id.slice(3);if(id===cur.tab)return;
+      select(id,false);panelOf(id).querySelectorAll('tr.row.open').forEach(function(r){setRow(r,false)});
+      record({tab:id,row:null,dlg:false},'push');
+    });
+  });
+
   panelsEl.addEventListener('click',function(e){
     var t=e.target;
     var row=t.closest('tr.row');
     if(row){
-      var willOpen=!row.classList.contains('open');
-      if(willOpen){row.closest('tbody').querySelectorAll('tr.row.open').forEach(function(r){if(r!==row)setRow(r,false)})}
-      setRow(row,willOpen);
-      if(willOpen){var top=row.getBoundingClientRect().top;if(top<0||top>innerHeight*0.6)row.scrollIntoView({behavior:'auto',block:'start'})}
+      if(row.classList.contains('open')){closeRowByUser(row);return}
+      row.closest('tbody').querySelectorAll('tr.row.open').forEach(function(r){if(r!==row)setRow(r,false)});
+      setRow(row,true);
+      record({tab:cur.tab,row:row.getAttribute('data-key'),dlg:false},cur.row?'replace':'push');
+      var top=row.getBoundingClientRect().top;if(top<0||top>innerHeight*0.6)row.scrollIntoView({behavior:'auto',block:'start'});
       return}
     var hb=t.closest('.howbtn');
-    if(hb){var box=hb.closest('div').querySelector('.how');var o=hb.getAttribute('aria-expanded')!=='true';hb.setAttribute('aria-expanded',o?'true':'false');box.hidden=!o;return}
+    if(hb){
+      var o=hb.getAttribute('aria-expanded')!=='true',hk=hb.getAttribute('data-h');
+      document.querySelectorAll('.howbtn[data-h="'+hk+'"]').forEach(function(b){b.setAttribute('aria-expanded',o?'true':'false');b.closest('div').querySelector('.how').hidden=!o});
+      try{var hs=JSON.parse(sessionStorage.getItem('vibe-how')||'[]');hs=hs.filter(function(x){return x!==hk});if(o)hs.push(hk);sessionStorage.setItem('vibe-how',JSON.stringify(hs))}catch(err){}
+      return}
     if(t.classList.contains('d-close')){
-      var r0=t.closest('tr.detail').previousElementSibling;setRow(r0,false);
-      r0.scrollIntoView({behavior:'auto',block:'center'});return}
+      var r0=t.closest('tr.detail').previousElementSibling;
+      r0.scrollIntoView({behavior:'auto',block:'center'});closeRowByUser(r0);return}
     var p=t.closest('.panel');
-    if(t.classList.contains('openAll')){p.querySelectorAll('tr.row').forEach(function(r){setRow(r,true)});return}
-    if(t.classList.contains('closeAll')){p.querySelectorAll('tr.row').forEach(function(r){setRow(r,false)});return}
+    if(t.classList.contains('openAll')){p.querySelectorAll('tr.row').forEach(function(r){setRow(r,true)});record({tab:cur.tab,row:null,dlg:false},'replace');return}
+    if(t.classList.contains('closeAll')){p.querySelectorAll('tr.row').forEach(function(r){setRow(r,false)});record({tab:cur.tab,row:null,dlg:false},'replace');return}
     if(t.classList.contains('copy')){
       var pre=t.closest('.prompt-wrap').querySelector('.prompt');copyText(pre.textContent,t,pre,'복사');return}
     if(t.classList.contains('tsv')){
@@ -652,14 +1031,13 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     if(t.classList.contains('qrMake')){
       var tool=t.closest('.qr-tool'),inp=tool.querySelector('.qrInput'),box=tool.querySelector('.qrBox'),m=tool.querySelector('.qrMsg');
       var v=inp.value.trim();if(v&&!/^https?:\/\//.test(v))v='https://'+v;
-      if(!v||v.length<12){m.hidden=false;m.textContent='배포 주소를 넣어 주세요. 예: https://my-timer.vercel.app';box.hidden=true;return}
+      if(!v||v.length<12){m.hidden=false;m.textContent='배포 주소를 넣어 주세요. 예: https://내사이트이름.vercel.app';box.hidden=true;return}
       m.hidden=true;box.innerHTML='';box.hidden=false;
       if(window.QRCode){new QRCode(box,{text:v,width:180,height:180})}
       else{box.hidden=true;m.hidden=false;m.textContent='QR 도구를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.'}
       try{localStorage.setItem('vibe-course-url',v)}catch(e){}
     }
   });
-  /* 상세 안의 입력·체크를 누를 때 행이 접히지 않게: detail 행은 row가 아니므로 위 분기에 걸리지 않음 */
   panelsEl.addEventListener('change',function(e){
     var k=e.target.getAttribute('data-k');if(!k)return;
     data[k]=e.target.checked;save();
@@ -675,13 +1053,26 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
   }
 
-  try{var u=localStorage.getItem('vibe-course-url');if(u)document.querySelectorAll('.qrInput').forEach(function(i){i.value=u})}catch(e){}
-  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){select(+b.dataset.go,true)})});
+  /* 오픈소스 라이선스 팝업 */
+  licBtn.addEventListener('click',function(){showDlg(true);record({tab:cur.tab,row:cur.row,dlg:true},'push')});
+  document.getElementById('licClose').addEventListener('click',closeDlgByUser);
+  dlg.addEventListener('click',function(e){if(e.target===dlg)closeDlgByUser()});
+  dlg.addEventListener('cancel',function(e){e.preventDefault();closeDlgByUser()});
 
-  var start=1,h=(location.hash||'').slice(1);
-  if(/^course[1-4]$/.test(h))start=+h.slice(6);
-  else{try{var sv=+localStorage.getItem('vibe-course-tab');if(sv>=1&&sv<=4)start=sv}catch(e){}}
-  select(start,/^course[1-4]$/.test(h));
+  /* ---------- 시작: 새로고침이면 직전 화면 그대로, 처음이면 기록을 준비 ---------- */
+  try{var u=localStorage.getItem('vibe-course-url');if(u)document.querySelectorAll('.qrInput').forEach(function(i){i.value=u})}catch(e){}
+  try{JSON.parse(sessionStorage.getItem('vibe-how')||'[]').forEach(function(hk){document.querySelectorAll('.howbtn[data-h="'+hk+'"]').forEach(function(b){b.setAttribute('aria-expanded','true');b.closest('div').querySelector('.how').hidden=false})})}catch(e){}
+  var hashTab=(/^#course([1-4])$/.exec(location.hash||'')||[])[1];
+  var hs0=history.state;
+  if(hs0&&hs0.app&&!hashTab){
+    cur.tab=0;apply(hs0);
+  }else{
+    var start=hashTab?+hashTab:1;
+    if(!hashTab){try{var sv=+localStorage.getItem('vibe-course-tab');if(sv>=1&&sv<=4)start=sv}catch(e){}}
+    cur.tab=0;apply({tab:start,row:null,dlg:false});
+    try{history.replaceState({guard:1},'',CLEAN);history.pushState({app:1,tab:start,row:null,dlg:false},'',CLEAN)}catch(e){}
+    if(hashTab)select(start,true);
+  }
   updateProgress();
 })();
 </script>
